@@ -1,6 +1,7 @@
 package de.telran.weather.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import de.telran.weather.entity.Forecast;
 import de.telran.weather.entity.SearchResult;
 
@@ -15,6 +16,7 @@ public class WeatherGateway {
 
     public WeatherGateway(ObjectMapper mapper) {
         this.mapper = mapper;
+        this.mapper.setPropertyNamingStrategy(PropertyNamingStrategy.SNAKE_CASE);
     }
 
     public SearchResult[] findCityByName(String cityName) throws Exception {

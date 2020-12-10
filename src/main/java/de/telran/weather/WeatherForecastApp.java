@@ -21,6 +21,11 @@ public class WeatherForecastApp {
     }
 
     public static void main(String[] args) throws Exception {
-
+        InputOutputService inputOutputService = new InputOutputService();
+        ObjectMapper mapper = new ObjectMapper();
+        WeatherGateway weatherGateway = new WeatherGateway(mapper);
+        WeatherService service = new WeatherService(weatherGateway);
+        WeatherForecastApp weatherForecastApp = new WeatherForecastApp(inputOutputService, service);
+        weatherForecastApp.execute();
     }
 }
