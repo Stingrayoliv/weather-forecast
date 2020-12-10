@@ -16,7 +16,6 @@ public class WeatherGateway {
 
     public WeatherGateway(ObjectMapper mapper) {
         this.mapper = mapper;
-        this.mapper.setPropertyNamingStrategy(PropertyNamingStrategy.SNAKE_CASE);
     }
 
     public SearchResult[] findCityByName(String cityName) throws Exception {

@@ -16,10 +16,13 @@ class WeatherForecastAppTest {
     WeatherService service = mock(WeatherService.class);
 
     @Test
-    public void execute() throws Exception {
-        when(inputOutputService.readValue()).thenReturn(anyString());
-        when(service.getWeatherByCityName(anyString())).thenReturn(anyString());
-        inputOutputService.print(anyString());
+    public void testExecute() throws Exception {
+        when(inputOutputService.readValue()).thenReturn("berlin");
+        when(service.getWeatherByCityName(anyString())).thenReturn("0.33");
+        doNothing().when(inputOutputService).print("0.33");
+
+        WeatherForecastApp weatherForecastApp=new WeatherForecastApp(inputOutputService, service);
+        weatherForecastApp.execute();
 
         verify(inputOutputService, times(1)).readValue();
         verify(service, times(1)).getWeatherByCityName(anyString());
