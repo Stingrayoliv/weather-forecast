@@ -1,6 +1,7 @@
 package de.telran.weather.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import de.telran.weather.entity.Forecast;
 import de.telran.weather.entity.SearchResult;
 
