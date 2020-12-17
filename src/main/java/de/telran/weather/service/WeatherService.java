@@ -13,7 +13,6 @@ public class WeatherService {
 
     private WeatherGateway gateway;
     protected static final Logger log= LogManager.getLogger(WeatherGateway.class);
-    @Autowired
     public WeatherService(WeatherGateway gateway) {
         this.gateway = gateway;
     }

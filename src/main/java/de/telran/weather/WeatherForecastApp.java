@@ -10,7 +10,7 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-
+"
 import java.util.Optional;
 
 public class WeatherForecastApp {
@@ -18,7 +18,6 @@ public class WeatherForecastApp {
     private WeatherService service;
 
     protected static final Logger log= LogManager.getLogger(WeatherForecastApp.class);
-    @Autowired
     public WeatherForecastApp(InputOutputService inputOutputService, WeatherService service) {
         this.inputOutputService = inputOutputService;
         this.service = service;

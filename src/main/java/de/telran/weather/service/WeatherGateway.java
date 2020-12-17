@@ -13,7 +13,6 @@ public class WeatherGateway {
     private final String FORECAST_URL = "https://www.metaweather.com/api/location/";
 
     private ObjectMapper mapper;
-    @Autowired
     public WeatherGateway(ObjectMapper mapper) {
         this.mapper = mapper;
     }
