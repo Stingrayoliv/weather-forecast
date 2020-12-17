@@ -3,6 +3,7 @@ package de.telran.weather.service;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import de.telran.weather.entity.Forecast;
 import de.telran.weather.entity.SearchResult;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.net.URL;
 
@@ -12,13 +13,12 @@ public class WeatherGateway {
     private final String FORECAST_URL = "https://www.metaweather.com/api/location/";
 
     private ObjectMapper mapper;
-
+    @Autowired
     public WeatherGateway(ObjectMapper mapper) {
         this.mapper = mapper;
     }
 
     public SearchResult[] findCityByName(String cityName) throws Exception {
-
         URL searchUrl = new URL(SEARCH_URL + cityName);
 
         SearchResult[] searchResults = mapper.readValue(searchUrl, SearchResult[].class);
