@@ -1,13 +1,17 @@
 package de.telran.weather.service;
 
+import de.telran.weather.WeatherForecastApp;
 import de.telran.weather.entity.Forecast;
 import de.telran.weather.entity.SearchResult;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 
 import java.util.Optional;
 
 public class WeatherService {
 
     private WeatherGateway gateway;
+    protected static final Logger log= LogManager.getLogger(WeatherGateway.class);
 
     public WeatherService(WeatherGateway gateway) {
         this.gateway = gateway;
@@ -17,6 +21,7 @@ public class WeatherService {
         SearchResult[] cityByName = gateway.findCityByName(cityName);
 
         if (cityByName.length == 0) {
+            log.error("City "+cityName+" not found");
             return Optional.empty();
         }
         Forecast forecast = gateway.getWeatherByWoeid(cityByName[0].getWoeid());
