@@ -7,7 +7,10 @@ import de.telran.weather.service.WeatherGateway;
 import de.telran.weather.service.WeatherService;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
-
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+"
 import java.util.Optional;
 
 public class WeatherForecastApp {
@@ -15,7 +18,6 @@ public class WeatherForecastApp {
     private WeatherService service;
 
     protected static final Logger log= LogManager.getLogger(WeatherForecastApp.class);
-
     public WeatherForecastApp(InputOutputService inputOutputService, WeatherService service) {
         this.inputOutputService = inputOutputService;
         this.service = service;
@@ -34,12 +36,15 @@ public class WeatherForecastApp {
     }
 
     public static void main(String[] args) throws Exception {
-        InputOutputService inputOutputService = new InputOutputService();
-        ObjectMapper mapper = new ObjectMapper();
-        mapper.setPropertyNamingStrategy(PropertyNamingStrategy.SNAKE_CASE);
-        WeatherGateway gateway = new WeatherGateway(mapper);
-        WeatherService weatherService = new WeatherService(gateway);
-        WeatherForecastApp app = new WeatherForecastApp(inputOutputService, weatherService);
+//        InputOutputService inputOutputService = new InputOutputService();
+//        ObjectMapper mapper = new ObjectMapper();
+//        mapper.setPropertyNamingStrategy(PropertyNamingStrategy.SNAKE_CASE);
+//        WeatherGateway gateway = new WeatherGateway(mapper);
+//        WeatherService weatherService = new WeatherService(gateway);
+//        WeatherForecastApp app = new WeatherForecastApp(inputOutputService, weatherService);
+//        app.execute();
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(Config.class);
+        WeatherForecastApp app= (WeatherForecastApp) context.getBean("app");
         app.execute();
     }
 }
